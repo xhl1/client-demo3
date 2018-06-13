@@ -1,7 +1,6 @@
 package com.example.clientdemo3.controller;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -12,9 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LoanController {
-    @RequestMapping(value = "testParams",params = {"param1=value1","param2","!param3"})
-    @ModelAttribute
-
+    @GetMapping(value = "testParams")
     public String testParams(){
         System.out.println("test Params........");
         return "testParams";

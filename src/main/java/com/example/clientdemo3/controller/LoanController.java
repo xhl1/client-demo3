@@ -1,7 +1,13 @@
 package com.example.clientdemo3.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.clientdemo3.bean.LoanBean;
+import com.example.clientdemo3.entity.Loan;
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @ClassName: LoanController
@@ -11,9 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LoanController {
-    @GetMapping(value = "testParams")
-    public String testParams(){
-        System.out.println("test Params........");
-        return "testParams";
+    @PostMapping(value = "testParams")
+    public String testParams(@RequestBody LoanBean loanBean) throws InvocationTargetException, IllegalAccessException {
+        System.out.println("LoanBean:"+loanBean);
+        Loan loan = new Loan();
+        BeanUtils.copyProperties(loan,loanBean);
+        System.out.println("Loan:"+loan);
+        return "成功";
     }
 }

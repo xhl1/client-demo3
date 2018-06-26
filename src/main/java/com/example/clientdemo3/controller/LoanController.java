@@ -3,9 +3,7 @@ package com.example.clientdemo3.controller;
 import com.example.clientdemo3.bean.LoanBean;
 import com.example.clientdemo3.entity.Loan;
 import org.apache.commons.beanutils.BeanUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -24,5 +22,16 @@ public class LoanController {
         BeanUtils.copyProperties(loan,loanBean);
         System.out.println("Loan:"+loan);
         return "成功";
+    }
+
+    @GetMapping("/test001")
+    public String testGet(@PathVariable String param){
+        System.out.println(param);
+        return "GET:成功!";
+    }
+    @PostMapping("/test001")
+    public String testPost(){
+        System.out.println();
+        return "POST:成功!";
     }
 }

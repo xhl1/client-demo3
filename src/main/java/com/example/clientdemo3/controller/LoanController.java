@@ -2,6 +2,7 @@ package com.example.clientdemo3.controller;
 
 import com.example.clientdemo3.bean.LoanBean;
 import com.example.clientdemo3.entity.Loan;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
  * @Description:
  * @Date 2018/6/4下午 2:13
  */
+@Slf4j
 @RestController
 public class LoanController {
     @PostMapping(value = "testParams")
@@ -33,5 +35,10 @@ public class LoanController {
     public String testPost(){
         System.out.println();
         return "POST:成功!";
+    }
+
+    @GetMapping("/test000002")
+    public void testGet(){
+        log.info("成功访问Get路径");
     }
 }
